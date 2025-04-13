@@ -216,3 +216,24 @@ Cask is a trademark of Cask Data, Inc. All rights reserved.
 
 Apache, Apache HBase, and HBase are trademarks of The Apache Software Foundation. Used with
 permission. No endorsement by The Apache Software Foundation is implied by the use of these marks.
+##  Wrangler Enhancement: ByteSize and TimeDuration Parsers
+
+This enhancement adds support for parsing **byte size** (e.g., `10KB`, `2MB`, `1GB`) and **time duration** values (e.g., `500ms`, `2s`, `1min`) directly within Wrangler recipes.
+
+###  Features Added
+
+- **New Token Types**:
+  - `BYTE_SIZE`: Supports KB, MB, GB values.
+  - `TIME_DURATION`: Supports ms, s, and minutes.
+- **New Token Classes**:
+  - `ByteSize.java`
+  - `TimeDuration.java`
+- **New Directive**:
+  - `aggregate-stats`: Performs aggregation on byte and time columns.
+
+---
+
+###  Usage Example: aggregate-stats Directive
+
+```wrangler
+aggregate-stats :data_transfer_size :response_time :total_size_mb :total_time_sec
